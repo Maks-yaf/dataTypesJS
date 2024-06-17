@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> Data types of JavaScript</title>
+</head>
+<body>
+<nav id="navbar">
+    <header>Data types</header>
+    <ul>
+        <li><a class="nav-link" href="#Data_types">Data types</a></li>
+        <li><a class="nav-link" href="#Number">Number</a></li>
+        <li><a class="nav-link" href="#BigInt">BigInt</a></li>
+        <li><a class="nav-link" href="#String">String</a></li>
+        <li><a class="nav-link" href="#Boolean_(logical)_type">Boolean (logical) type</a></li>
+        <li><a class="nav-link" href="#Null">Null</a></li>
+        <li><a class="nav-link" href="#Undefined">Undefined</a></li>
+        <li><a class="nav-link" href="#Object_and_symbols">Object and symbols</a></li>
+        <li><a class="nav-link" href="#Typeof_operator">Typeof operator</a></li>
+        <li><a class="nav-link" href="#Total">Total</a></li>
+    </ul>
+</nav>
+<main id ="main-doc">
+    <section class="main-section" id="Data_types">
+        <header>Data types</header>
+        <article>
+            <p>A value in JavaScript always refers to a specific data type. For example, it could be a string or a number.</p>
+            <p>There are eight main data types in JavaScript. In this chapter we will look at them in general, and in subsequent chapters we will talk in more detail about each.</p>
+            <p>A variable in JavaScript can contain any data. At one moment there may be a string, and at another - a number:</p>
+            <code class="code"><pre>
+              // Won't be a mistake
+              let message = "hello";
+              message = 123456;</pre>
+            </code>
+            <p>Programming languages that allow this are called “dynamically typed”. This means that there are data types, but the variables are not bound to any of them.</p>
+        </article>
+    </section>
+    <section class="main-section" id="Number">
+        <header>Number</header>
+        <article>
+            <code class="code"><pre>
+              let n = 123;
+              n = 12.345;</pre>
+            </code>
+            <p>The numeric data type (<b>number</b>) represents both integer and floating-point values.</p>
+            <p>There are many operations for numbers, such as multiplication <b>*</b>, division <b>/</b>, addition <b>+</b>, subtraction <b>-</b> and so on.</p>
+            <p>In addition to ordinary numbers, there are so-called “special numeric values” that belong to this data type: <b>Infinity</b>, <b>-Infinityand</b> or <b>NaN</b>.</p>
+            <ul>
+                <li><b>Infinity</b> represents the mathematical infinity ∞. This is a special value that is greater than any number.</li>
+                <li><b>NaN</b> means a computational error. This is the result of an incorrect or undefined mathematical operation, for example:</li>
+            </ul>
+            <p>Meaning <b>NaN</b> "sticky". Any mathematical operation with NaN returns NaN</p>
+        </article>
+    </section>
+    <section class="main-section" id="BigInt">
+        <header>BigInt</header>
+        <article>
+            <p>In JavaScript, a type <b>number</b> cannot safely operate on numbers greater than (i.e. ) or less than for negative numbers.<b>(2<sup>53</sup>-1) 9007199254740991 - (2<sup>53</sup>-1)</b></p>
+            <p>To be very precise, the type <b>number</b> can technically store large integers (up to ), but outside the safe range of integers there will be a precision error since not all digits fit into the fixed 64-bit memory. Therefore, it is possible to store an "approximate" value. <b>1.7976931348623157 * 10<sup>308</sup>±(2<sup>53</sup>-1)</b></p>
+            <p>For example, these two numbers (just outside the safe range) are the same:</p>
+            <code class="code"><pre>
+              console.log(9007199254740991 + 1); // 9007199254740992
+              console.log(9007199254740991 + 2); // 9007199254740992</pre>
+            </code>
+            <p>That is, all odd integers greater than , cannot be stored in the type at all .<b>(2<sup>53</sup>-1) number</b></p>
+            <p>The type <b>BigIn</b> twas added to JavaScript to make it possible to work with integers of arbitrary length.</p>
+            <p>To create a value of type <b>BigInt</b>, you need to add the nfollowing to the end of the numeric literal:</p>
+            <code class="code"><pre>
+              const bigInt = 1234567890123456789012345678901234567890n;</pre>
+            </code>
+        </article>
+    </section>
+    <section class="main-section" id="String">
+        <header>String</header>
+        <article>
+            <p>The string (<b>string</b>) in JavaScript must be enclosed in quotation marks.</p>
+            <code class="code">
+              <pre>
+              let str = "Hello";
+              let str2 = 'Single quotes are fine too';
+              let phrase = `Backticks allow variables to be embedded ${str}`;</pre>
+            </code>
+            <p>There are three types of quotes in JavaScript.</p>
+            <ol>
+                <li>Double quotes: <b>"Hello"</b>.</li>
+                <li>Single quotes: <b>'Hello'</b>.</li>
+                <li>Backticks: <b>`Hello`</b>.</li>
+            </ol>
+            <p>Double or single quotes are "single" quotes; there is no difference between them in JavaScript.</p>
+            <p>Backticks have extended functionality. They allow us to embed expressions in a string by enclosing them in <b>${…}</b>. For example:</p>
+            <code class="code"><pre>
+            let name = "Maks";
+            alert( `Hello, ${name}!` ); // Hello, Maks!
+            alert( `Result: ${1 + 2}` ); // Result: 3</pre>
+            </code>
+            <p>The expression inside <b>${…}</b> is evaluated and its result becomes part of the string. We can put whatever we want there: a variable <b>name</b>, or an expression <b>1 + 2</b>, or something more complex.</p>
+        </article>
+    </section>
+    <section class="main-section" id="Boolean_(logical)_type">
+        <header>Boolean (logical) type</header>
+        <article>
+            <p>The Boolean type (<b>boolean</b>) can only take two values: <b>true</b> and <b>false</b>.</p>
+            <p>This type is typically used to store yes/no values: <b>true</b> it means “yes, right”, and <b>false</b> means “no, not right.”</p>
+            <p>For example:</p>
+            <code class="code"><pre>
+             let nameFieldChecked = true; // yes, is checked
+             let ageFieldChecked = false; // no, is not checked</pre>
+            </code>
+            <p>Boolean values can also be the result of comparisons:</p>
+            <code class="code"><pre>
+            let isGreater = 4 > 1;
+            alert( isGreater ); // true (the result of the comparison will be "yes")</pre>
+            </code>
+        </article>
+    </section>
+    <section class="main-section" id="Null">
+        <header>Null</header>
+        <article>
+            <p>The special value <b>null</b> is not one of the types described above.</p>
+            <p>It forms a separate type that contains only the value <b>null</b>:</p>
+            <p>In JavaScript, <b>null</b> it is not a "reference to a non-existent object" or a "null pointer" as in some other languages.</p>
+            <p>It is simply a special value that represents "nothing", "empty" or "unknown value".</p>
+        </article>
+    </section>
+    <section class="main-section" id="Undefined">
+        <header>Undefined</header>
+        <article>
+            <p>The special meaning <b>undefined</b> also stands out. It forms a type from itself in the same way as <b>null</b>.</p>
+            <p>It means "no value was assigned."</p>
+            <p>If a variable is declared, but no value is assigned to it, then its value will be <b>undefined</b>:</p>
+            <code class="code"><pre>
+              let age;
+              alert(age); // will show "undefined"</pre>
+            </code>
+        </article>
+    </section>
+    <section class="main-section" id="Object_and_symbols">
+        <header>Object and symbols </header>
+        <article>
+            <p>The type <b>object</b> is special.</p>
+            <p>All other types are called "primitive" because their values can only be simple values (be it a string, or a number, or something else). Objects store collections of data or more complex structures.</p>
+            <p>A type <b>symbol</b>(character) is used to create unique identifiers in objects. We mention it here for the sake of completeness; we will study this type after objects.</p>
+        </article>
+    </section>
+    <section class="main-section" id="Typeof_operator">
+        <header>Typeof operator</header>
+        <article>
+            <p>The operator <b>typeof</b> returns the type of the argument. This is useful when we want to treat values of different types differently or just want to do some checking.</p>
+            <p>It has two syntactic forms:</p>
+            <code class="code"><pre>
+              typeof 5; // Output "number"
+              typeof(5); // Also output "number"</pre>
+            </code>
+            <p>If an expression is passed, then it must be enclosed in parentheses, because typeof has higher precedence than binary operators:</p>
+            <code class="code"><pre>
+              typeof 50 + " Apartments"; // Output "number Apartments"
+              typeof (50 + " Apartments"); // Output "string"</pre>
+            </code>
+            <p>In other words, the parentheses are needed to determine the type of the value that results from executing the expression within them.</p>
+            <p>The call <b>typeof x</b> returns a string with the type name</p>
+            <code class="code"><pre>
+              typeof undefined // "undefined"
+              typeof 0 // "number"
+              typeof 10n // "bigint"
+              typeof true // "boolean"
+              typeof "foo" // "string"
+              typeof Symbol("id") // "symbol"
+              typeof Math // "object"  (1)
+              typeof null // "object"  (2)
+              typeof alert // "function"  (3)</pre>
+            </code>
+            <p>The last three lines need clarification:</p>
+            <ol>
+                <li><b>Math</b> is a built-in object that provides mathematical operations and constants. Here it serves only as an example object.</li>
+                <li>The result of the call <b>typeof null</b> is <b>"object"</b>. This is an officially recognized bug in <b>typeof</b>, dating back to the inception of JavaScript and kept for compatibility. Of course <b>null</b> it is not an object. This is a special value with a separate type.</li>
+                <li>The call <b>typeof alert</b> returns <b>"function"</b> because <b>alert</b> it is a function. We'll explore functions in the following chapters, where we'll also see that JavaScript doesn't have a special function type. Functions are of the object type. But <b>typeof</b> it processes them in a special way, returning <b>"function"</b>. This also happened from the creation of JavaScript. This is formally incorrect, but can be convenient in practice.</li>
+            </ol>
+        </article>
+    </section>
+    <section class="main-section" id="Total">
+        <header>Total</header>
+        <article>
+            <p>There are 8 main data types in JavaScript.</p>
+            <ul>
+                <li>Seven of these are called "primitive" data types:</li>
+                <ul>
+                    <li><b>number</b> for any numbers: integers or floating point numbers; integer values are limited to range .±(2<sup>53</sup>-1)</li>
+                    <li><b>bigint</b> for integers of arbitrary length.</li>
+                    <li><b>string</b> for strings. A string can contain zero or more characters; there is no separate character type.</li>
+                    <li><b>boolean</b> For <b>true/ false</b>.</li>
+                    <li><b>null</b> for unknown values – a separate type that has one value <b>null</b>.</li>
+                    <li><b>undefined</b> for unassigned values, a separate type that has one value <b>undefined</b>.</li>
+                    <li><b>symbol</b> for unique identifiers.</li>
+                </ul>
+                <li>And one is not “primitive” and stands apart:</li>
+                <ul>
+                    <li><b>object</b> for more complex data structures.</li>
+                </ul>
+            </ul>
+            <p>The operator <b>typeof</b> allows us to see what type of data is stored in the variable.</p>
+            <ul>
+                <li>It has two forms: <b>typeof</b> xor <b>typeof(x)</b>.</li>
+                <li>Returns a string with the name of the type. For example, <b>"string"</b>.</li>
+                <li>For <b>null</b> returns <b>"object"</b> is a bug in the language; it's not actually an object.</li>
+            </ul>
+        </article>
+    </section>
+</main>
+</body>
+</html>
